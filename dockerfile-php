@@ -1,0 +1,33 @@
+FROM php:fpm
+RUN apt-get update && apt-get install -y \
+      imagemagick \
+      libfreetype6-dev \
+      libjpeg62-turbo-dev \
+      libmcrypt-dev \
+      libpng12-dev \
+      libmemcached-dev \
+    && docker-php-ext-install -j$(nproc) \
+      exif \
+      gd \
+      iconv \
+      mbstring \
+      mcrypt \
+      mysqli \
+      pdo \
+      pdo_mysql \
+    && pecl install \
+      igbinary \
+      memcached \
+      xdebug \
+      zip \
+    && docker-php-ext-enable \
+      igbinary \
+      memcached \
+      xdebug \
+      zip
+
+#
+# @TODO
+#
+#  Install PHP OPCache
+#
