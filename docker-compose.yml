@@ -37,16 +37,33 @@ phpfpm:
 
     links:
         - mysql
+        - solr
+
+solr:
+    container_name: solr
+    build: .
+    dockerfile: dockerfile-solr
+    ports:
+        - "8983:8983"
+    volumes:
+        # SOLR Config from Drupal's SEARCH_API_SOLR module.
+        - ../alexa-d8/modules/search_api_solr/solr-conf/5.x/:/opt/solr/server/solr/solr_namespace/conf
+
+        # Store SOLR data externally, to preserve indexes.
+        - ./solr-data:/opt/solr/server/solr/solr_namespace/data
 
 mysql:
   image: mariadb
+
+  # host machine port:container port
   ports:
-    - "3306:3006"
+    - "3306:3306"
   environment:
     MYSQL_ROOT_PASSWORD: admin
-    MYSQL_DATABASE: drupal
-    MYSQL_USER: drupal
-    MYSQL_PASSWORD: drupal
+
+#    MYSQL_DATABASE: drupal
+#    MYSQL_USER: drupal
+#    MYSQL_PASSWORD: drupal
 
   volumes:
     - ./mysql-data:/var/lib/mysql:rw
