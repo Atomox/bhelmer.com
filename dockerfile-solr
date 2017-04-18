@@ -1,4 +1,4 @@
 FROM solr:5.5.4
 RUN \
-  mkdir -p /opt/solr/server/solr/solr_namespace/conf && \
+  mkdir -p /opt/solr/server/solr/collection1/conf && \
   chown solr:solr -R /opt/solr/server/solr

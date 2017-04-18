@@ -30,10 +30,17 @@ phpfpm:
         - ./public:/var/www/html
 
         # External codebase
-        - ../alexa-d8/:/var/www/html/alexa-d8
+        - ../alexa-d8/:/var/www/html/alexa-d8/
+
+        # Drush / Composer vender/bin
+        - ../alexa-d8/alexa-d8/vendor/bin:/usr/local/drupal/vendor/bin
 
         # Conf file lives here.
         - ./php/php-config.ini:/usr/local/etc/php/conf.d/php-config.ini
+
+#    environment:
+        # Drush Path
+#        - PATH=/usr/local/drupal/vendor/bin:$PATH
 
     links:
         - mysql
@@ -47,10 +54,10 @@ solr:
         - "8983:8983"
     volumes:
         # SOLR Config from Drupal's SEARCH_API_SOLR module.
-        - ../alexa-d8/modules/search_api_solr/solr-conf/5.x/:/opt/solr/server/solr/solr_namespace/conf
+        - ../alexa-d8/alexa-d8/web/modules/contrib/search_api_solr/solr-conf/5.x/:/opt/solr/server/solr/collection1/conf
 
         # Store SOLR data externally, to preserve indexes.
-        - ./solr-data:/opt/solr/server/solr/solr_namespace/data
+        - ./solr-data:/opt/solr/server/solr/collection1/data
 
 mysql:
   image: mariadb
@@ -60,10 +67,9 @@ mysql:
     - "3306:3306"
   environment:
     MYSQL_ROOT_PASSWORD: admin
-
-#    MYSQL_DATABASE: drupal
-#    MYSQL_USER: drupal
-#    MYSQL_PASSWORD: drupal
+    MYSQL_DATABASE: drupal
+    MYSQL_USER: drupal
+    MYSQL_PASSWORD: drupal
 
   volumes:
     - ./mysql-data:/var/lib/mysql:rw
