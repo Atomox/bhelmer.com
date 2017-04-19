@@ -17,8 +17,8 @@ nginx:
         - ../alexa-d8/:/var/www/html/alexa-d8
 
         # Logs
-        - ./logs/nginx-error.log:/var/log/nginx/error.log
-        - ./logs/nginx-access.log:/var/log/nginx/access.log
+#        - ./logs/nginx-error.log:/var/log/nginx/error.log
+#        - ./logs/nginx-access.log:/var/log/nginx/access.log
 
 phpfpm:
     container_name: phpfpm_extras
@@ -47,6 +47,15 @@ phpfpm:
     links:
         - mysql
         - solr
+
+
+tomcat:
+    container_name: tomcat
+    build: .
+    dockerfile: dockerfile-tomcat
+    ports:
+        - "8080:8080"
+
 
 solr:
     container_name: solr

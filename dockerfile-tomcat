@@ -1,0 +1,12 @@
+FROM tomcat:8.5.13-jre8
+
+
+# cd alexa-aem-demo
+# mvn clean install
+# scp target/alexa-aem-demo-1.0-SNAPSHOT.war <tomcat/webapps folder/askey.war># 
+
+# It (app) will send calls to localhost:4503/content/ey/en/askey.html# 
+
+# To change, modify src/main/java/com/ey/alexa/aem/AskEYSpeechlet.java
+
+# To test, go to localhost:8080/askey/index.jsp
