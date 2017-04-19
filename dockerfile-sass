@@ -1,0 +1,10 @@
+FROM ruby:2.2
+
+# See this aweXome blog post:
+# https://larry-price.com/blog/2015/05/17/compile-sass-with-docker
+# Borrowed, with gusto!
+
+RUN gem install sass
+
+WORKDIR /tmp
+ENTRYPOINT ["sass", "--watch", "/src"]
