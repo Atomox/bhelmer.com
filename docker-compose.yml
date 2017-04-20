@@ -95,11 +95,11 @@ mysql:
 
 
 # Let's compile Sass!
-sass:
-    container_name: sass
-    dockerfile: dockerfile-sass
-    build: .
-
-    volumes:
-        # Directory to watch and compile.
-        - ../alexa-d8/alexa-d8/web/themes/custom/alexa:/src
+#sass:
+#    container_name: sass
+#    dockerfile: dockerfile-sass
+#    build: .
+# 
+#    volumes:
+#        # Directory to watch and compile.
+#        - ../alexa-d8/alexa-d8/web/themes/custom/alexa:/src
