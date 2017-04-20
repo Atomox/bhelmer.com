@@ -1,4 +1,5 @@
 nginx:
+    container_name: nginx
     image: nginx:1.10.3-alpine
     ports:
         - "80:80"
@@ -48,14 +49,20 @@ phpfpm:
         - mysql
         - solr
 
-
 tomcat:
     container_name: tomcat
-    build: .
-    dockerfile: dockerfile-tomcat
+    image: tomcat:8.5.13-jre8
     ports:
-        - "8080:8080"
+        - 8080:8080
 
+    volumes:
+        # Persist Tomcat webapp data.
+        - ./tomcat/webapps:/usr/local/tomcat/webapps
+        - ../ey-innovation/alexa-aem-demo/target/alexa-aem-demo-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/alexa.war
+
+    # Tomcat needs to talk to the server / Drupal.
+    links:
+        - nginx
 
 solr:
     container_name: solr
