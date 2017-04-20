@@ -58,7 +58,7 @@ tomcat:
     volumes:
         # Persist Tomcat webapp data.
         - ./tomcat/webapps:/usr/local/tomcat/webapps
-        - ../ey-innovation/alexa-aem-demo/target/alexa-aem-demo-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/alexa.war
+        - ../ey-innovation/alexa-aem-demo/target/alexa-aem-demo-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/askey.war
 
     # Tomcat needs to talk to the server / Drupal.
     links:
