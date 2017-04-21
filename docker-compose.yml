@@ -10,8 +10,6 @@ services:
         ports:
             - "80:80"
             - "443:443"
-
-
         volumes:
             # Internal code lives here
             - ./public:/var/www/html
@@ -24,10 +22,6 @@ services:
 
             # SSL Directory
             - ./nginx/ssl/:/etc/nginx/ssl
-
-            # Logs
-    #        - ./logs/nginx-error.log:/var/log/nginx/error.log
-    #        - ./logs/nginx-access.log:/var/log/nginx/access.log
 
     phpfpm:
         container_name: phpfpm_extras
