@@ -1,6 +1,9 @@
 nginx:
     container_name: nginx
-    image: nginx:1.10.3-alpine
+#    image: nginx:1.10.3-alpine
+#    image: nginx:1.12
+    dockerfile: dockerfile-nginx
+    build: .
     ports:
         - "80:80"
         - "443:443"
@@ -16,6 +19,9 @@ nginx:
 
         # External codebase
         - ../alexa-d8/:/var/www/html/alexa-d8
+
+        # SSL Directory
+        - ./nginx/ssl/:/etc/nginx/ssl
 
         # Logs
 #        - ./logs/nginx-error.log:/var/log/nginx/error.log
