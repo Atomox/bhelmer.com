@@ -19,12 +19,12 @@ RUN apt-get update && apt-get install -y \
       igbinary \
       memcached \
       xdebug \
-      zip \
+#      zip \
     && docker-php-ext-enable \
       igbinary \
       memcached \
       xdebug \
-      zip
+#      zip
 
 #
 # @TODO
