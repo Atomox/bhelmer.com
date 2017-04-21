@@ -1,7 +1,8 @@
 FROM nginx:1.12
 
 RUN apt-get update; apt-get install -y \
-	openssl;
+	openssl \
+	curl;
 
 
 	# sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
