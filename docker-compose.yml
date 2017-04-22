@@ -87,12 +87,12 @@ services:
 
 
     # Let's compile Sass!
-    #sass:
-    #    container_name: sass
-    #    build:
-    #       context:   .
-    #       dockerfile: dockerfile-sass
-    #
-    #    volumes:
-    #        # Directory to watch and compile.
-    #        - ../alexa-d8/alexa-d8/web/themes/custom/alexa:/src
+    sass:
+        container_name: sass
+        build:
+           context:   .
+           dockerfile: dockerfile-sass
+
+        volumes:
+            # Directory to watch and compile.
+            - ../alexa-d8/alexa-d8/web/themes/custom/alexa:/src
