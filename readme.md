@@ -32,3 +32,7 @@ php -r "unlink('composer-setup.php');"
  5. `docker-compose ps` to confirm nothing failed. There should be 4 containers, including: `SOLR`, `NGINX`, `MYSQL`, and `PHPFPM`.
 
 
+## Logging
+rysyslog is installed on phpfpm. Start with `service rsyslog start` inside the phpfpm container.
+
+For all logs: `docker-compose logs -f [optinal_container_name]` (tails the logs)

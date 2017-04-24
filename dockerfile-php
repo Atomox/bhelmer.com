@@ -6,6 +6,8 @@ RUN apt-get update && apt-get install -y \
       libmcrypt-dev \
       libpng12-dev \
       libmemcached-dev \
+      vim \
+      rsyslog \
     && docker-php-ext-install -j$(nproc) \
       exif \
       gd \
@@ -15,6 +17,7 @@ RUN apt-get update && apt-get install -y \
       mysqli \
       pdo \
       pdo_mysql \
+      opcache \
     && pecl install \
       igbinary \
       memcached \

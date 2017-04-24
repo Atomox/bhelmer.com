@@ -24,7 +24,7 @@ services:
             - ./nginx/ssl/:/etc/nginx/ssl
 
     phpfpm:
-        container_name: phpfpm_extras
+        container_name: phpfpm
         build:
             context: .
             dockerfile: dockerfile-php
@@ -42,7 +42,9 @@ services:
             - ../alexa-d8/alexa-d8/vendor/bin:/usr/local/drupal/vendor/bin
 
             # Conf file lives here.
-            - ./php/php-config.ini:/usr/local/etc/php/conf.d/php-config.ini
+            - ./php/php-donfig.ini:/usr/local/etc/php-fpm.d/php-config.ini
+#            - ./php/php-config.ini:/usr/local/etc/php/conf.d/php-config.ini
+#            - ./php/etc:/usr/local/etc/
 
     tomcat:
         container_name: tomcat
