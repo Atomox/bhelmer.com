@@ -2,8 +2,6 @@ version: '2'
 services:
     nginx:
         container_name: nginx
-    #    image: nginx:1.10.3-alpine
-    #    image: nginx:1.12
         build:
             context: .
             dockerfile: dockerfile-nginx
@@ -18,7 +16,7 @@ services:
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
 
             # External codebase
-            - ../alexa-d8/:/var/www/html/alexa-d8
+#             - ../alexa-d8/:/var/www/html/alexa-d8
 
             # SSL Directory
             - ./nginx/ssl/:/etc/nginx/ssl
@@ -30,53 +28,23 @@ services:
             dockerfile: dockerfile-php
 
         ports:
-            - "9000:9000"
+            - "9000"
         volumes:
             # Internal code lives here
             - ./public:/var/www/html
 
             # External codebase
-            - ../alexa-d8/:/var/www/html/alexa-d8/
-
-            # Drush / Composer vender/bin
-            - ../alexa-d8/alexa-d8/vendor/bin:/usr/local/drupal/vendor/bin
+#            - ../alexa-d8/:/var/www/html/alexa-d8/
 
             # Conf file lives here.
-            - ./php/php-donfig.ini:/usr/local/etc/php-fpm.d/php-config.ini
-#            - ./php/php-config.ini:/usr/local/etc/php/conf.d/php-config.ini
-#            - ./php/etc:/usr/local/etc/
-
-    tomcat:
-        container_name: tomcat
-        image: tomcat:8.5.13-jre8
-        ports:
-            - 8080:8080
-
-        volumes:
-            # Persist Tomcat webapp data.
-            - ./tomcat/webapps:/usr/local/tomcat/webapps
-            - ../ey-innovation/alexa-aem-demo/target/alexa-aem-demo-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/askey.war
-
-    solr:
-        container_name: solr
-        build:
-            context: .
-            dockerfile: dockerfile-solr
-        ports:
-            - "8983:8983"
-        volumes:
-            # SOLR Config from Drupal's SEARCH_API_SOLR module.
-            - ../alexa-d8/alexa-d8/web/modules/contrib/search_api_solr/solr-conf/5.x/:/opt/solr/server/solr/collection1/conf
-
-            # Store SOLR data externally, to preserve indexes.
-            - ./solr-data/collection1:/opt/solr/server/solr/collection1/data
+            - ./php/php-config.ini:/usr/local/etc/php-fpm.d/php-config.ini
 
     mysql:
       image: mariadb
 
       # host machine port:container port
       ports:
-        - "3306:3306"
+        - "3306"
       environment:
         MYSQL_ROOT_PASSWORD: admin
         MYSQL_DATABASE: drupal
@@ -89,12 +57,12 @@ services:
 
 
     # Let's compile Sass!
-    sass:
-        container_name: sass
-        build:
-           context:   .
-           dockerfile: dockerfile-sass
+#    sass:
+#        container_name: sass
+#        build:
+#           context:   .
+#           dockerfile: dockerfile-sass
 
-        volumes:
+#        volumes:
             # Directory to watch and compile.
-            - ../alexa-d8/alexa-d8/web/themes/custom/alexa:/src
+#            - ../alexa-d8/alexa-d8/web/themes/custom/alexa:/src
