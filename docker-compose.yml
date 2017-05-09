@@ -55,6 +55,19 @@ services:
         - ./mysql-data:/var/lib/mysql:rw
     #    - ./mysql/conf.d:/etc/mysql/conf.d
 
+    node1:
+      container_name: node1
+      build:
+        context: ./node.js/pixi
+        dockerfile: dockerfile
+      ports:
+        - 8000
+      working_dir: /usr/src/app
+      command: forever app.js
+      volumes:
+        - ./node.js/pixi:/usr/src/app
+      # Persist container running.
+      tty: true
 
     # Let's compile Sass!
 #    sass:
