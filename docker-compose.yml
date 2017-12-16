@@ -83,9 +83,7 @@ services:
 
     mtastatusreact:
       container_name: mtastatusreact
-      build:
-        context: ./node.js/mta-delays/react
-        dockerfile: dockerfile
+      image: atomox/mta-status:mta-svc-react-v0.1
       ports:
         - 8100
       volumes:
