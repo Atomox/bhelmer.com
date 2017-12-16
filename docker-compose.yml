@@ -76,8 +76,6 @@ services:
         dockerfile: dockerfile
       ports:
         - 8100
-      working_dir: /usr/src/server
-      command: forever server.js
       volumes:
         - ./node.js/mta-delays/server:/usr/src/server
       # Persist container running.
