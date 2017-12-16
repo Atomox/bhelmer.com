@@ -81,6 +81,18 @@ services:
       # Persist container running.
       tty: true
 
+    mtastatusreact:
+      container_name: mtastatusreact
+      build:
+        context: ./node.js/mta-delays/react
+        dockerfile: dockerfile
+      ports:
+        - 8100
+      volumes:
+        - ./node.js/mta-delays/react:/usr/src/react
+      # Persist container running.
+      tty: true
+
     # Let's compile Sass!
 #    sass:
 #        container_name: sass
