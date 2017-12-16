@@ -71,9 +71,7 @@ services:
 
     mtastatus:
       container_name: mtastatus
-      build:
-        context: ./node.js/mta-delays/server
-        dockerfile: dockerfile
+      image: atomox/mta-status:mta-svc-server-v0.1
       ports:
         - 8100
       volumes:
