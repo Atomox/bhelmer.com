@@ -79,7 +79,7 @@ services:
 
     mtastatusreact:
       container_name: mtastatusreact
-      image: atomox/mta-status:mta-svc-react-v0.2
+      image: atomox/mta-status:mta-svc-react-v0.2.1
       ports:
         - 8101
       volumes:
