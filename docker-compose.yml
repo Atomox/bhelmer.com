@@ -79,7 +79,7 @@ services:
       working_dir: /usr/src/app
       command: forever server.js
       volumes:
-        - ./node.js/mta-delays/server:/usr/src/app
+        - ./node.js/mta-delays/server:/usr/src/server
       # Persist container running.
       tty: true
 
