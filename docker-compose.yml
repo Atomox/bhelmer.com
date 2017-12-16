@@ -16,7 +16,7 @@ services:
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
 
             # External codebase
-#             - ../alexa-d8/:/var/www/html/alexa-d8
+#            - ./php/repo/:/var/www/html/repo/
 
             # SSL Directory
             - ./nginx/ssl/:/etc/nginx/ssl
@@ -34,7 +34,7 @@ services:
             - ./public:/var/www/html
 
             # External codebase
-#            - ../alexa-d8/:/var/www/html/alexa-d8/
+#            - ./php/repo/:/var/www/html/repo/
 
             # Conf file lives here.
             - ./php/php-config.ini:/usr/local/etc/php-fpm.d/php-config.ini
@@ -66,6 +66,20 @@ services:
       command: forever app.js
       volumes:
         - ./node.js/pixi:/usr/src/app
+      # Persist container running.
+      tty: true
+
+    mtastatus:
+      container_name: mtastatus
+      build:
+        context: ./mta-delays/server
+        dockerfile: dockerfile
+      ports:
+        - 8100
+      working_dir: /usr/src/app
+      command: forever server.js
+      volumes:
+        - ./node.js/mta-delays/server:/usr/src/app
       # Persist container running.
       tty: true
 
