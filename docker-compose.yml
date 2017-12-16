@@ -74,7 +74,7 @@ services:
       container_name: mtastatus
       image: atomox/mta-status:mta-svc-server-v0.2
       ports:
-        - 8383:8100
+        - 8100
       volumes:
         - ./node.js/mta-delays/server:/usr/src/server
       # Persist container running.
