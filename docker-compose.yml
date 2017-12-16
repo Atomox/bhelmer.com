@@ -72,7 +72,7 @@ services:
     mtastatus:
       container_name: mtastatus
       build:
-        context: ./mta-delays/server
+        context: ./node.js/mta-delays/server
         dockerfile: dockerfile
       ports:
         - 8100
