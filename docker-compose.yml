@@ -21,38 +21,38 @@ services:
             # SSL Directory
             - ./nginx/ssl/:/etc/nginx/ssl
 
-    phpfpm:
-        container_name: phpfpm
-        build:
-            context: .
-            dockerfile: dockerfile-php
+#    phpfpm:
+#        container_name: phpfpm
+#        build:
+#            context: .
+#            dockerfile: dockerfile-php
 
-        ports:
-            - "9000"
-        volumes:
+#        ports:
+#            - "9000"
+#        volumes:
             # Internal code lives here
-            - ./public:/var/www/html
+#            - ./public:/var/www/html
 
             # External codebase
 #            - ./php/repo/:/var/www/html/repo/
 
             # Conf file lives here.
-            - ./php/php-config.ini:/usr/local/etc/php-fpm.d/php-config.ini
+#            - ./php/php-config.ini:/usr/local/etc/php-fpm.d/php-config.ini
 
-    mysql:
-      image: mariadb
+#    mysql:
+#      image: mariadb
 
       # host machine port:container port
-      ports:
-        - "3306"
-      environment:
-        MYSQL_ROOT_PASSWORD: admin
-        MYSQL_DATABASE: drupal
-        MYSQL_USER: drupal
-        MYSQL_PASSWORD: drupal
+#      ports:
+#        - "3306"
+#      environment:
+#        MYSQL_ROOT_PASSWORD: admin
+#        MYSQL_DATABASE: drupal
+#        MYSQL_USER: drupal
+#        MYSQL_PASSWORD: drupal
 
-      volumes:
-        - ./mysql-data:/var/lib/mysql:rw
+#      volumes:
+#        - ./mysql-data:/var/lib/mysql:rw
     #    - ./mysql/conf.d:/etc/mysql/conf.d
 
     node1:
