@@ -81,7 +81,7 @@ services:
       container_name: mtastatusreact
       image: atomox/mta-status:mta-svc-react-v0.2
       ports:
-        - 8100
+        - 8101
       volumes:
         - ./node.js/mta-delays/react:/usr/src/react
       # Persist container running.
