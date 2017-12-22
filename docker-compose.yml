@@ -77,6 +77,8 @@ services:
         - 8100
       volumes:
         - ./node.js/mta-delays/server:/usr/src/server
+
+        - ./node.js/mta-delays/config:/usr/src/config
       # Persist container running.
       tty: true
 
