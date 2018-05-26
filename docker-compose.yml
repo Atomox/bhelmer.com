@@ -72,7 +72,7 @@ services:
 
     mtastatus:
       container_name: mtastatus
-      image: atomox/mta-status:mta-svc-server-v1.0.0-astoria-ditmars
+      image: atomox/mta-status:mta-svc-server-v0.6.5-bliss-st-pre
       ports:
         - 8100
       volumes:
